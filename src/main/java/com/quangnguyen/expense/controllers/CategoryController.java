@@ -43,4 +43,10 @@ public class CategoryController {
         Category result = categoryRepository.save(category);
         return ResponseEntity.ok().body(result);
     }
+
+    @DeleteMapping("/category/{id}")
+    ResponseEntity<?> deleteCategory(@PathVariable long id) {
+        categoryRepository.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
 }
