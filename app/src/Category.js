@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
+import AppNav from "./AppNav";
+import App from "./App";
 
 class Category extends Component {
   state = {
@@ -15,15 +17,23 @@ class Category extends Component {
   render() {
     const { Categories, isLoading } = this.state;
     if (isLoading) {
-      return <div>Loading...</div>;
+      return (
+        <Fragment>
+          <AppNav />
+          <div>Loading...</div>
+        </Fragment>
+      );
     } else {
       return (
-        <div>
-          <h2>Categories</h2>
-          {Categories.map(category => (
-            <div id={category.id}>{category.name}</div>
-          ))}
-        </div>
+        <Fragment>
+          <AppNav />
+          <div>
+            <h2>Categories</h2>
+            {Categories.map(category => (
+              <div id={category.id}>{category.name}</div>
+            ))}
+          </div>
+        </Fragment>
       );
     }
   }
